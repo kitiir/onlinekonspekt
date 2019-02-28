@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Онлайн конспект</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/styles.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<div class="wrapper container">
+		<header>
+			<a href="/"><img src="http://kvantorium.68edu.ru/images/Logo/logo-Itkvantum-min-360x203(unwhite).png" alt="Whitesquare logo"></a>
+			<form name="search" action="#" method="get" class="form-inline form-search pull-right">
+				<div class="input-group">
+					<label class="sr-only" for="searchInput">Поиск</label>
+					<input class="form-control" id="searchInput" type="text" name="search" placeholder="Поиск">
+					<div class="input-group-btn">
+						<button type="submit" class="btn btn-primary"><img src="http://s1.iconbird.com/ico/2013/9/450/w256h2561380453921Search256x25632.png" width="310%" height="310%"></button>
+					</div>
+				</div>
+			</form>
+		</header>
+		<nav class="navbar navbar-default">
+			<ul class="nav navbar-nav">
+				<li><a href="/home/">Главная</a></li>
+				<li class="active"><a href="/about/">О нас</a></li>
+				<li><a href="/services/">Сервисы</a></li>
+				<li><a href="/partners/">Партнеры</a></li>
+				<li><a href="/customers/">Проекты</a></li>
+				<li><a href="/projects/">Статьи</a></li>
+				<li><a href="/careers/">Наши достижения</a></li>
+				<li><a href="/contact/">Контакты</a></li>
+			</ul>
+		</nav>
+		<div class="heading">
+			<h1>Миксер</h1>
+		</div>
+		<div class="row">
+			<aside class="col-md-7">
+				<ul class="list-group submenu">
+					<li class="list-group-item active"><a href="index.html">Домой</li>
+					<li class="list-group-item active"><a href="lesson1.html">СВЕТИЛЬНИК С УПРАВЛЯЕМОЙ ЯРКОСТЬЮ</a></li>
+					<li class="list-group-item active"><a href="lesson2.html">ПУЛЬСАР</a></li>
+					<li class="list-group-item active"><a href="lesson4.html">МЕРЗКОЕ ПИАНИНО</a></li>
+					<li class="list-group-item active"><a href="lesson3.html">МИКСЕР</a></li>
+				</ul>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Our offices</div>
+					<div class="panel-body">
+						<img src="/images/map.png" class="img-responsive" alt="Our offices">
+					</div>
+				</div>
+			</aside>
+			<section class="col-md-17">
+				<div class="jumbotron">
+					<blockquote>
+						<p>
+							&ldquo;Эксперимент 9. Миксер&rdquo;
+						</p>
+						<small>В этом эксприменте мы создаем модель миксера с двумя скоростями работы.</small>
+					</blockquote>
+				</div>
+
+				<h2>Список деталей для эксперимента</h2>
+					<p>• 1 плата Arduino Uno</p>
+					<p>• беспаечная макетная плата</p>
+					<p>• 3 тактовых кнопки</p>
+					<p>• 1 коллекторный двигатель</p>
+					<p>• 1 выпрямительный диод</p>
+					<p>• 1 полевой MOSFET-транзистор</p>
+					<p>• 15 проводов «папа-папа»</p>
+					<p>• 1 клеммник, если вы используете мотор с проводами, которые плохо втыкаются в макетку</p>
+
+				<h3>Для дополнительного задания</h3>
+					<p>• еще 1 кнопка</p>
+					<p>• еще 2 провода</p>
+
+				<h2>Принципиальная схема</h2>
+					<img src="http://wiki.amperka.ru/_media/конспект-arduino:9_mixer_scheme.svg.png">
+
+				<h2>Схема на макетке</h2>
+					<img src="http://wiki.amperka.ru/_media/конспект-arduino:9_mixer_bread.svg.png">
+
+				<h2>Обратите внимание</h2>	
+					<p>• Защитный диод нам нужен для того, чтобы ток обратного направления, который начнет создавать двигатель, вращаясь по инерции, не вывел из строя транзистор.</p>
+					<p>• Не перепутайте полярность диода, иначе, открыв транзистор, вы устроите короткое замыкание!</p>
+					<p>• Причину отсутствия подтягивающих/стягивающих резисторов в схеме вы поймете, ознакомившись с программой.</p>
+					<p>• Мы подключили питание схемы к выходу Vin платы микроконтроллера, потому что, в отличие выхода 5V, отсюда можно получить напряжение, подключенное к плате, без изменений и без ограничений по величине тока.</p>
+
+				<h2>Скетч</h2>
+					<pre class="prettyprint lang-c">#define MOTOR_PIN        9
+#define FIRST_BUTTON_PIN 5
+#define BUTTON_COUNT     3
+// имена можно давать не только числам, но и целым выражениям.
+// Мы определяем с каким шагом (англ. step) нужно менять
+// скорость (англ. speed) мотора при нажатии очередной кнопки
+#define SPEED_STEP  (255 / (BUTTON_COUNT - 1))
+ 
+void setup()
+{
+  pinMode(MOTOR_PIN, OUTPUT);
+  // на самом деле, в каждом пине уже есть подтягивающий
+  // резистор. Для его включения необходимо явно настроить пин
+  // как вход с подтяжкой (англ. input with pull up)
+  for (int i = 0; i < BUTTON_COUNT; ++i)
+    pinMode(i + FIRST_BUTTON_PIN, INPUT_PULLUP);
+}
+ 
+void loop()
+{
+  for (int i = 0; i < BUTTON_COUNT; ++i) {
+    // если кнопка отпущена, нам она не интересна. Пропускаем
+    // оставшуюся часть цикла for, продолжая (англ. continue)
+    // его дальше, для следующего значения i
+    if (digitalRead(i + FIRST_BUTTON_PIN))
+      continue;
+ 
+    // кнопка нажата — выставляем соответствующую ей скорость
+    // мотора. Нулевая кнопка остановит вращение, первая
+    // заставит крутиться в полсилы, вторая — на полную
+    int speed = i * SPEED_STEP;
+ 
+    // подача ШИМ-сигнала на мотор заставит его крутиться с
+    // указанной скоростью: 0 — стоп машина, 127 — полсилы,
+    // 255 — полный вперёд!
+    analogWrite(MOTOR_PIN, speed);
+  }
+}</pre>
+			
+				<h2>Пояснения к коду</h2>
+					<p>• Мы использовали новый режим работы портов: INPUT_PULLUP. На цифровых портах Arduino есть встроенные подтягивающие резисторы, которые можно включить указанным образом одновременно с настройкой порта на вход. Именно поэтому мы не использовали резисторы при сборке схемы.</p>
+					<p>• На каждой итерации цикла мы задаем мотору скорость вращения, пропорциональную текущему значению счетчика. Но выполнение инструкций не дойдет до назначения новой скорости, если при проверке нажатия кнопки она окажется отпущенной. Инструкция continue, которая выполнится в этом случае, отменит продолжение данной итерации цикла и выполнение программы продолжится со следующей. А мотор будет крутиться со скоростью, заданной при последнем нажатии на какую-то из кнопок.</p>
+
+				<h2>Вопросы для проверки себя</h2>
+					<p>1. Зачем в схеме использован диод?</p>
+					<p>2. Почему мы использовали полевой MOSFET-транзистор, а не биполярный?</p>
+					<p>3. Почему мы не использовали резистор между портом Arduino и затвором транзистора?</p>
+					<p>4. Как работает инструкция continue, использованная в цикле for?</p>
+
+				<h2>Задания для самостоятельного решения</h2>	
+					<p>1. Внесите единственное изменение в программу, после которого максимальной скоростью вращения мотора составит половину от возможной.</p>
+					<p>2. Перепишите программу без использования инструкции continue.</p>
+					<p>3. Добавьте в схему еще одну кнопку, чтобы у миксера стало три режима. Понадобилось ли изменять что-либо в программе?</p>
+
+
+				<div class="row">
+					<div class="col-md-12">
+						<img src="/images/about-1.png" alt="" class="thumbnail">
+					</div>
+					<div class="col-md-12">
+						<img src="/images/about-2.png" alt="" class="thumbnail">
+					</div>
+				</div>
+				<h2>Our team</h2>
+				<div class="team">
+					<div class="row">
+						<div class="col col-md-4">
+							<img src="/images/team/Doe.jpg" alt="John Doe" class="thumbnail">
+							<div class="caption">
+								<h3>John Doe</h3>
+								<p>ceo</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Pittsley.jpg" alt="Saundra Pittsley" class="thumbnail">
+							<div class="caption">
+								<h3>Saundra Pittsley</h3>
+								<p>team leader</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Simser.jpg" alt="Julio Simser" class="thumbnail">
+							<div class="caption">
+								<h3>Julio Simser</h3>
+								<p>senior developer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Venuti.jpg" alt="Margery Venuti" class="thumbnail">
+							<div class="caption">
+								<h3>Margery Venuti</h3>
+								<p>senior developer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Tondrea.jpg" alt="Fernando Tondrea" class="thumbnail">
+							<div class="caption">
+								<h3>Fernando Tondrea</h3>
+								<p>developer</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-md-4">
+							<img src="/images/team/Nobriga.jpg" alt="Ericka Nobriga" class="thumbnail">
+							<div class="caption">
+								<h3>Ericka Nobriga</h3>
+								<p>art director</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Rousselle.jpg" alt="Cody Rousselle" class="thumbnail">
+							<div class="caption">
+								<h3>Cody Rousselle</h3>
+								<p>senior ui designer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Wollman.jpg" alt="Erik Wollman" class="thumbnail">
+							<div class="caption">
+								<h3>Erik Wollman</h3>
+								<p>senior ui designer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Shoff.jpg" alt="Dona Shoff" class="thumbnail">
+							<div class="caption">
+								<h3>Dona Shoff</h3>
+								<p>ux designer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Brunton.jpg" alt="Darryl Brunton" class="thumbnail">
+							<div class="caption">
+								<h3>Darryl Brunton</h3>
+								<p>ui designer</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 twitter">
+					<h3>Twitter feed</h3>
+					<time datetime="2012-10-23"><a href="#">23 oct</a></time>
+					<p>
+						In ultricies pellentesque massa a porta. Aliquam ipsum enim, hendrerit ut porta nec, ullamcorper et nulla. In eget mi dui, sit amet scelerisque nunc. Aenean aug
+					</p>
+				</div>
+				<div class="col-md-4 sitemap">
+					<h3>Sitemap</h3>
+					<div class="row">
+						<div class="col-md-12">
+							<a href="/home/">Home</a>
+							<a href="/about/">About</a>
+							<a href="/services/">Services</a>
+						</div>
+						<div class="col-md-12">
+							<a href="/partners/">Partners</a>
+							<a href="/customers/">Support</a>
+							<a href="/contact/">Contact</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 social">
+					<h3>Social networks</h3>
+					<a href="http://twitter.com/" class="social-icon twitter"></a>
+					<a href="http://facebook.com/" class="social-icon facebook"></a>
+					<a href="http://plus.google.com/" class="social-icon google-plus"></a>
+					<a href="http://vimeo.com/" class="social-icon-small vimeo"></a>
+					<a href="http://youtube.com/" class="social-icon-small youtube"></a>
+					<a href="http://flickr.com/" class="social-icon-small flickr"></a>
+					<a href="http://instagram.com/" class="social-icon-small instagram"></a>
+					<a href="/rss/" class="social-icon-small rss"></a>
+				</div>
+				<div class="col-md-8 footer-logo">
+					<a href="/"><img src="images/footer-logo.png" alt="Whitesquare logo"></a>
+					<p>
+						Copyright &copy; 2012 Whitesquare. A
+						<a href="http://pcklab.com">pcklab</a> creation
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  </body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Онлайн конспект</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/styles.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<div class="wrapper container">
+		<header>
+			<a href="/"><img src="http://kvantorium.68edu.ru/images/Logo/logo-Itkvantum-min-360x203(unwhite).png" alt="Whitesquare logo"></a>
+			<form name="search" action="#" method="get" class="form-inline form-search pull-right">
+				<div class="input-group">
+					<label class="sr-only" for="searchInput">Поиск</label>
+					<input class="form-control" id="searchInput" type="text" name="search" placeholder="Поиск">
+					<div class="input-group-btn">
+						<button type="submit" class="btn btn-primary"><img src="http://s1.iconbird.com/ico/2013/9/450/w256h2561380453921Search256x25632.png" width="310%" height="310%"></button>
+					</div>
+				</div>
+			</form>
+		</header>
+		<nav class="navbar navbar-default">
+			<ul class="nav navbar-nav">
+				<li><a href="/home/">Главная</a></li>
+				<li class="active"><a href="/about/">О нас</a></li>
+				<li><a href="/services/">Сервисы</a></li>
+				<li><a href="/partners/">Партнеры</a></li>
+				<li><a href="/customers/">Проекты</a></li>
+				<li><a href="/projects/">Статьи</a></li>
+				<li><a href="/careers/">Наши достижения</a></li>
+				<li><a href="/contact/">Контакты</a></li>
+			</ul>
+		</nav>
+		<div class="heading">
+			<h1>Пульсар</h1>
+		</div>
+		<div class="row">
+			<aside class="col-md-7">
+				<ul class="list-group submenu">
+					<li class="list-group-item active"><a href="index.html">Домой</li>
+					<li class="list-group-item active"><a href="lesson1.html">СВЕТИЛЬНИК С УПРАВЛЯЕМОЙ ЯРКОСТЬЮ</a></li>
+					<li class="list-group-item active"><a href="lesson2.html">ПУЛЬСАР</a></li>
+					<li class="list-group-item active"><a href="lesson4.html">МЕРЗКОЕ ПИАНИНО</a></li>
+					<li class="list-group-item active"><a href="lesson3.html">МИКСЕР</a></li>
+				</ul>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Our offices</div>
+					<div class="panel-body">
+						<img src="/images/map.png" class="img-responsive" alt="Our offices">
+					</div>
+				</div>
+			</aside>
+			<section class="col-md-17">
+				<div class="jumbotron">
+					<blockquote>
+						<p>
+							&ldquo;Эксперимент 6. Пульсар&rdquo;
+						</p>
+						<small>В этом эксперименте мы плавно наращиваем яркость светодиодной шкалы, управляя большой нагрузкой через транзистор.</small>
+					</blockquote>
+				</div>
+			 <h2>Список деталей для эксперимента</h2>
+				  <p>• 1 плата Arduino Uno</p>
+				  <p>• 1 беспаечная макетная плата</p>
+                  <p>• 1 биполярный транзистор</p>
+                  <p>• 1 светодиодная шкала</p>
+                  <p>• 1 резистор номиналом 1 кОм</p>
+                  <p>• 10 резисторов номиналом 220 Ом</p>
+                  <p>• 13 проводов «папа-папа»</p>
+               <h2>Принципиальная схема</h2>
+                 <img src="http://wiki.amperka.ru/_media/%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82-arduino:6_scheme.svg.png">
+               <h2>Схема на макетке</h2>
+                <img src="http://wiki.amperka.ru/_media/%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82-arduino:6_bread.svg.png">
+               <h2>Обратите внимание</h2>
+                  <p>• Светодиодная шкала — это несколько светодиодов в одном корпусе. Нам нужно чтобы питание шло к их анодам, а катоды направлялись к земле. Скорее всего на вашей шкале аноды находятся со стороны маркировки. Если шкала не светится, когда должна, попробуйте перевернуть ее.</p>
+                  <p>• База биполярного транзистора — это его средняя ножка. Если повернуть транзистор плоской стороной к себе, ножками вниз, то левая ножка это коллектор, а правая — эмиттер.</p>
+                  <p>• Если эту схему собрать без резистора между базой транзистора и портом Arduino, мы практически устроим короткое замыкание порта на землю. Рано или поздно это выведет из строя транзистор или ножку микроконтроллера.</p>
+                  <p>• Зачем здесь вообще транзистор? Без него такое количество светодиодов будет потреблять больше тока, чем 40 мА, которые может себе позволить цифровой пин платы. Поэтому мы берем питание из порта 5V, рассчитанного на ток до 500 мА, а на цифровой порт ставим транзистор, чтобы с помощью малого тока управлять большим.</p>
+                  <p>• В данном случае мы включили 10 светодиодов параллельно, каждый через отдельный резистор. Включать их через один резистор неправильно: даже светодиоды из одной партии имеют минимальный разброс вольт-амперных характеристик, вследствие чего они:</p>
+                  <p1> Светились бы с различной яркостью</p1>
+                  <p1> Из-за минимальной разницы во времени включения, больший ток, прошедший через первый включившийся светодиод, мог бы вывести его из строя. И так по цепочке.</p1>
+                <h2>Скетч</h2>
+                <pre class="prettyprint lang-c">
+                	#define CONTROL_PIN  9
+// переменные верхнего уровня, т.е. объявленные вне функций,
+// называют глобальными. Их значения сохраняются всё время,
+// пока работает микроконтроллер
+int brightness = 0;
+ 
+void setup()
+{
+  pinMode(CONTROL_PIN, OUTPUT);
+}
+ 
+void loop()
+{
+  // увеличиваем значение яркости на единицу, чтобы нарастить
+  // яркость. Однако яркость не должна быть более 255, поэтому
+  // используем операцию остатка от деления, чтобы при
+  // достижении значения 255, следующим значением снова стал 0
+  // Y % X — это остаток от деления Y на X;
+  // плюс, минус, делить, умножить, скобки — как в алгебре.
+  brightness = (brightness + 1) % 256;
+ 
+  // подаём вычисленный ШИМ-сигнал яркости на пин с базой
+  // управляющего транзистора
+  analogWrite(CONTROL_PIN, brightness);
+ 
+  // ждём 10 мс перед следующим наращиванием яркости. Таким
+  // образом, полный накал будет происходить в течение
+  // 256×10 = 2560 мс
+  delay(10);
+}
+                </pre>
+
+             <h2>Пояснения к коду</h2>
+               <p>• Как мы уже знаем, analogWrite(pin, value) в качестве value принимает значения от 0 до 255. Если передать значение из-за пределов этого диапазона, функция сработает, но в общем случае вы получите неожиданный результат.</p>
+               <p>• Оператор X % Y дает остаток от деления X на Y. Если X меньше Y, т.е. целая часть результата деления равна 0, оператор % будет возвращать X. Таким образом:</p>
+                   <p1>Пока brightness + 1 меньше 256, в brightness записывается значение brightness + 1
+                    Как только brightness + 1 принимает значение 256, результатом (brightness + 1) % 256 становится 0 и на следующей итерации loop() всё начинается сначала.</p1>
+               <p>• Оператор % работает только с целыми операндами.</p>
+               <p>• В выражении (brightness + 1) % 256 скобки используются для назначения порядка действий. Операция % имеет больший приоритет, чем +, а сложение нам нужно выполнять раньше. С операциями умножения и деления оператор взятия остатка имеет одинаковый приоритет.</p>
+
+               <h2>Вопросы для проверки себя</h2>
+                  <p>1. Почему у светодиодной шкалы на 10 сегментов 20 ножек?</p>
+                  <p>2. Зачем в схеме биполярный транзистор?</p>
+                  <p>3. За счет чего увеличивается яркость шкалы?</p>
+                  <p>4. Почему после достижения значения 255 переменная brightness обнуляется?</p>
+
+                <h2>Задания для самостоятельного решения</h2>
+                <p>1. Измените программу так, чтобы яркость шкалы росла только до половины от максимальной.</p>
+                <p>2. Измените программу так, чтобы шкала становилась максимально яркой в три раза быстрее, без изменения функции delay.</p>
+                <p>3. Измените исходную программу так, чтобы такой же результат был получен без использования операции %, но с применением условного оператора if.</p>
+
+
+
+				<div class="row">
+					<div class="col-md-12">
+						<img src="/images/about-1.png" alt="" class="thumbnail">
+					</div>
+					<div class="col-md-12">
+						<img src="/images/about-2.png" alt="" class="thumbnail">
+					</div>
+				</div>
+				<h2>Our team</h2>
+				<div class="team">
+					<div class="row">
+						<div class="col col-md-4">
+							<img src="/images/team/Doe.jpg" alt="John Doe" class="thumbnail">
+							<div class="caption">
+								<h3>John Doe</h3>
+								<p>ceo</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Pittsley.jpg" alt="Saundra Pittsley" class="thumbnail">
+							<div class="caption">
+								<h3>Saundra Pittsley</h3>
+								<p>team leader</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Simser.jpg" alt="Julio Simser" class="thumbnail">
+							<div class="caption">
+								<h3>Julio Simser</h3>
+								<p>senior developer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Venuti.jpg" alt="Margery Venuti" class="thumbnail">
+							<div class="caption">
+								<h3>Margery Venuti</h3>
+								<p>senior developer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Tondrea.jpg" alt="Fernando Tondrea" class="thumbnail">
+							<div class="caption">
+								<h3>Fernando Tondrea</h3>
+								<p>developer</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-md-4">
+							<img src="/images/team/Nobriga.jpg" alt="Ericka Nobriga" class="thumbnail">
+							<div class="caption">
+								<h3>Ericka Nobriga</h3>
+								<p>art director</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Rousselle.jpg" alt="Cody Rousselle" class="thumbnail">
+							<div class="caption">
+								<h3>Cody Rousselle</h3>
+								<p>senior ui designer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Wollman.jpg" alt="Erik Wollman" class="thumbnail">
+							<div class="caption">
+								<h3>Erik Wollman</h3>
+								<p>senior ui designer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Shoff.jpg" alt="Dona Shoff" class="thumbnail">
+							<div class="caption">
+								<h3>Dona Shoff</h3>
+								<p>ux designer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Brunton.jpg" alt="Darryl Brunton" class="thumbnail">
+							<div class="caption">
+								<h3>Darryl Brunton</h3>
+								<p>ui designer</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 twitter">
+					<h3>Twitter feed</h3>
+					<time datetime="2012-10-23"><a href="#">23 oct</a></time>
+					<p>
+						In ultricies pellentesque massa a porta. Aliquam ipsum enim, hendrerit ut porta nec, ullamcorper et nulla. In eget mi dui, sit amet scelerisque nunc. Aenean aug
+					</p>
+				</div>
+				<div class="col-md-4 sitemap">
+					<h3>Sitemap</h3>
+					<div class="row">
+						<div class="col-md-12">
+							<a href="/home/">Home</a>
+							<a href="/about/">About</a>
+							<a href="/services/">Services</a>
+						</div>
+						<div class="col-md-12">
+							<a href="/partners/">Partners</a>
+							<a href="/customers/">Support</a>
+							<a href="/contact/">Contact</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 social">
+					<h3>Social networks</h3>
+					<a href="http://twitter.com/" class="social-icon twitter"></a>
+					<a href="http://facebook.com/" class="social-icon facebook"></a>
+					<a href="http://plus.google.com/" class="social-icon google-plus"></a>
+					<a href="http://vimeo.com/" class="social-icon-small vimeo"></a>
+					<a href="http://youtube.com/" class="social-icon-small youtube"></a>
+					<a href="http://flickr.com/" class="social-icon-small flickr"></a>
+					<a href="http://instagram.com/" class="social-icon-small instagram"></a>
+					<a href="/rss/" class="social-icon-small rss"></a>
+				</div>
+				<div class="col-md-8 footer-logo">
+					<a href="/"><img src="images/footer-logo.png" alt="Whitesquare logo"></a>
+					<p>
+						Copyright &copy; 2012 Whitesquare. A
+						<a href="http://pcklab.com">pcklab</a> creation
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  </body>
+</html>

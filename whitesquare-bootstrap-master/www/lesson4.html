@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Онлайн конспект</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/styles.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<div class="wrapper container">
+		<header>
+			<a href="/"><img src="http://kvantorium.68edu.ru/images/Logo/logo-Itkvantum-min-360x203(unwhite).png" alt="Whitesquare logo"></a>
+			<form name="search" action="#" method="get" class="form-inline form-search pull-right">
+				<div class="input-group">
+					<label class="sr-only" for="searchInput">Поиск</label>
+					<input class="form-control" id="searchInput" type="text" name="search" placeholder="Поиск">
+					<div class="input-group-btn">
+						<button type="submit" class="btn btn-primary"><img src="http://s1.iconbird.com/ico/2013/9/450/w256h2561380453921Search256x25632.png" width="310%" height="310%"></button>
+					</div>
+				</div>
+			</form>
+		</header>
+		<nav class="navbar navbar-default">
+			<ul class="nav navbar-nav">
+				<li><a href="/home/">Главная</a></li>
+				<li class="active"><a href="/about/">О нас</a></li>
+				<li><a href="/services/">Сервисы</a></li>
+				<li><a href="/partners/">Партнеры</a></li>
+				<li><a href="/customers/">Проекты</a></li>
+				<li><a href="/projects/">Статьи</a></li>
+				<li><a href="/careers/">Наши достижения</a></li>
+				<li><a href="/contact/">Контакты</a></li>
+			</ul>
+		</nav>
+		<div class="heading">
+			<h1>Мерзкое пианино</h1>
+		</div>
+		<div class="row">
+			<aside class="col-md-7">
+				<ul class="list-group submenu">
+					<li class="list-group-item active"><a href="index.html">Домой</li>
+					<li class="list-group-item active"><a href="lesson1.html">СВЕТИЛЬНИК С УПРАВЛЯЕМОЙ ЯРКОСТЬЮ</a></li>
+					<li class="list-group-item active"><a href="lesson2.html">ПУЛЬСАР</a></li>
+					<li class="list-group-item active"><a href="lesson4.html">МЕРЗКОЕ ПИАНИНО</a></li>
+					<li class="list-group-item active"><a href="lesson3.html">МИКСЕР</a></li>
+				</ul>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Our offices</div>
+					<div class="panel-body">
+						<img src="/images/map.png" class="img-responsive" alt="Our offices">
+					</div>
+				</div>
+			</aside>
+			<section class="col-md-17">
+				<div class="jumbotron">
+					<blockquote>
+						<p>
+							&ldquo;Эксперимент 8. Мерзкое пианино&rdquo;
+						</p>
+						<small>В этом эксперименте мы создаем маленькую клавиатуру, на которой можно сыграть несколько нот.</small>
+					</blockquote>
+				</div>
+			 <h2>Список деталей для эксперимента</h2>
+				  <p>• 1 плата Arduino Uno</p>
+				  <p>• 1 беспаечная макетная плата</p>
+                  <p>• 1 пьезопищалка</p>
+                  <p>• 3 тактовых кнопки</p>
+                  <p>• 3 резистора номиналом 10 кОм</p>
+                  <p>• 10 проводов «папа-папа»</p>
+             <h2>Для дополнительного задания</h2>
+                  <p>• еще 2 кнопки</p>
+                  <p>• еще 2 резистора номиналом 10 кОм</p>
+                  <p>• еще 2 провода</p>
+                
+               <h2>Принципиальная схема</h2>
+                 <img src="http://wiki.amperka.ru/_media/%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82-arduino:8_dumb_piano_scheme.svg.png">
+               <h2>Схема на макетке</h2>
+                <img src="http://wiki.amperka.ru/_media/%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82-arduino:8_dumb_piano_bread.svg.png">
+               <h2>Обратите внимание</h2>
+                  <p>• Ножки тактовой кнопки, расположенные с одной стороны, разомкнуты, когда кнопка не нажата. Ножки, расположенные друг напротив друга на противоположных сторонах макетки находятся на одной «рельсе». Воспользовавшись этим, мы можем расположить резистор с одной стороны макетки, а провод, подключаемый к порту Arduino, с другой стороны.</p>
+                  <p>• В данном эксперименте мы подключаем кнопки по схеме с подтягивающим резистором.</p>
+                  <p>• Для того, чтобы данный вариант программы работал, важно, чтобы кнопки были подключены к портам, находящимся рядом друг с другом, т.е. имеющим соседние номера.</p>
+                  
+                <h2>Скетч</h2>
+                <pre class="prettyprint lang-c">
+#define BUZZER_PIN    13 // пин с пищалкой (англ. «buzzer»)
+#define FIRST_KEY_PIN 7  // первый пин с клавишей (англ. «key»)
+#define KEY_COUNT     3  // общее количество клавиш
+ 
+void setup()
+{
+  pinMode(BUZZER_PIN, OUTPUT);
+}
+ 
+void loop()
+{
+  // в цикле бежим по всем номерам кнопок от 0-го по 2-й
+  for (int i = 0; i < KEY_COUNT; ++i) {
+    // на основе номера кнопки вычисляем номер её пина
+    int keyPin = i + FIRST_KEY_PIN;
+ 
+    // считываем значение с кнопки. Возможны всего 2 варианта:
+    //  * высокий сигнал, 5 вольт, истина — кнопка отпущена
+    //  * низкий сигнал, земля, ложь — кнопка зажата
+    boolean keyUp = digitalRead(keyPin);
+ 
+    // проверяем условие «если не кнопка отпущена». Знак «!»
+    // перед булевой переменной означает отрицание, т.е. «не».
+    if (!keyUp) {
+      // рассчитываем высоту ноты в герцах в зависимости от
+      // клавиши, которую рассматриваем на данном этапе цикла.
+      // Мы получим значение 3500, 4000 или 4500
+      int frequency = 3500 + i * 500;
+ 
+      // Заставляем пищалку пищать с нужной частотой в течение
+      // 20 миллисекунд. Если клавиша останется зажатой, пищалка
+      // вновь зазвучит при следующем проходе loop, а мы услышим
+      // непрерывный звук
+      tone(BUZZER_PIN, frequency, 20);
+    }
+  }
+}
+                </pre>
+
+             <h2>Пояснения к коду</h2>
+               <p>• Благодаря тому, что в начале программы мы определили FIRST_KEY_PIN и KEY_COUNT, мы можем подключать произвольное количество кнопок к любым идущим друг за другом цифровым пинам, и для корректировки программы нам не придется менять параметры цикла for. Изменить понадобится лишь эти константы:
+цикл в любом случае пробегает от 0 до KEY_COUNT;
+перед считыванием порта мы задаем смещение на номер первого используемого порта — FIRST_KEY_PIN.</p>
+               <p>• Функция digitalRead(pin) возвращает состояние порта, номер которого передан ей параметром pin. Это может быть состояние HIGH или LOW. Или, выражаясь иначе: высокое напряжение или низкое, 1 или 0, true или false</p>
+             
+               <p>• Поскольку мы получаем с порта одно из двух состояний, мы сохраняем его в переменную уже знакомого нам типа boolean, и можем работать с ней как с логическим значением.</p>
+               <p>• Мы используем логический оператор отрицания «не» !. Если keyUp имеет значение 0, выражение !keyUp будет иметь значение 1 и наоборот.</p>
+               <p>• Поскольку мы собрали схему с подтягивающим резистором, при нажатии кнопки мы будем получать на соответствующем порте 0.</p>
+               <p>• Действия, описанные в условном выражении if, выполняются, когда его условие имеет значение «истина» (единица). Поэтому для выполнения действия по нажатию, мы инвертируем сигнал с кнопки.</p>
+
+               <h2>Вопросы для проверки себя</h2>
+                  <p>1. Почему мы не настраивали порты, к которым подключены кнопки, как INPUT, но устройство работает?</p>
+                  <p>2. Каким образом мы избежали написания отдельного когда для чтения каждой кнопки?</p>
+                  <p>3. Почему разные «ноты», издаваемые пищалкой, звучат с разной громкостью?</p>
+                  <p>4. Для чего мы использовали оператор логического отрицания '!' ?</p>
+
+                <h2>Задания для самостоятельного решения</h2>
+                <p>1. Сделайте так, чтобы наше пианино звучало в диапазоне от 2 кГц до 5 кГц.</p>
+                <p>2. Добавьте еще 2 кнопки и измените программу так, чтобы можно было извлечь 5 различных нот.</p>
+                <p>3. Подключите кнопки по схеме со стягивающим резистором и измените программу так, чтобы она продолжала работать.</p>
+
+
+
+				<div class="row">
+					<div class="col-md-12">
+						<img src="/images/about-1.png" alt="" class="thumbnail">
+					</div>
+					<div class="col-md-12">
+						<img src="/images/about-2.png" alt="" class="thumbnail">
+					</div>
+				</div>
+				<h2>Our team</h2>
+				<div class="team">
+					<div class="row">
+						<div class="col col-md-4">
+							<img src="/images/team/Doe.jpg" alt="John Doe" class="thumbnail">
+							<div class="caption">
+								<h3>John Doe</h3>
+								<p>ceo</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Pittsley.jpg" alt="Saundra Pittsley" class="thumbnail">
+							<div class="caption">
+								<h3>Saundra Pittsley</h3>
+								<p>team leader</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Simser.jpg" alt="Julio Simser" class="thumbnail">
+							<div class="caption">
+								<h3>Julio Simser</h3>
+								<p>senior developer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Venuti.jpg" alt="Margery Venuti" class="thumbnail">
+							<div class="caption">
+								<h3>Margery Venuti</h3>
+								<p>senior developer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Tondrea.jpg" alt="Fernando Tondrea" class="thumbnail">
+							<div class="caption">
+								<h3>Fernando Tondrea</h3>
+								<p>developer</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-md-4">
+							<img src="/images/team/Nobriga.jpg" alt="Ericka Nobriga" class="thumbnail">
+							<div class="caption">
+								<h3>Ericka Nobriga</h3>
+								<p>art director</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Rousselle.jpg" alt="Cody Rousselle" class="thumbnail">
+							<div class="caption">
+								<h3>Cody Rousselle</h3>
+								<p>senior ui designer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Wollman.jpg" alt="Erik Wollman" class="thumbnail">
+							<div class="caption">
+								<h3>Erik Wollman</h3>
+								<p>senior ui designer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Shoff.jpg" alt="Dona Shoff" class="thumbnail">
+							<div class="caption">
+								<h3>Dona Shoff</h3>
+								<p>ux designer</p>
+							</div>
+						</div>
+						<div class="col col-md-4 col-md-offset-1">
+							<img src="/images/team/Brunton.jpg" alt="Darryl Brunton" class="thumbnail">
+							<div class="caption">
+								<h3>Darryl Brunton</h3>
+								<p>ui designer</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 twitter">
+					<h3>Twitter feed</h3>
+					<time datetime="2012-10-23"><a href="#">23 oct</a></time>
+					<p>
+						In ultricies pellentesque massa a porta. Aliquam ipsum enim, hendrerit ut porta nec, ullamcorper et nulla. In eget mi dui, sit amet scelerisque nunc. Aenean aug
+					</p>
+				</div>
+				<div class="col-md-4 sitemap">
+					<h3>Sitemap</h3>
+					<div class="row">
+						<div class="col-md-12">
+							<a href="/home/">Home</a>
+							<a href="/about/">About</a>
+							<a href="/services/">Services</a>
+						</div>
+						<div class="col-md-12">
+							<a href="/partners/">Partners</a>
+							<a href="/customers/">Support</a>
+							<a href="/contact/">Contact</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 social">
+					<h3>Social networks</h3>
+					<a href="http://twitter.com/" class="social-icon twitter"></a>
+					<a href="http://facebook.com/" class="social-icon facebook"></a>
+					<a href="http://plus.google.com/" class="social-icon google-plus"></a>
+					<a href="http://vimeo.com/" class="social-icon-small vimeo"></a>
+					<a href="http://youtube.com/" class="social-icon-small youtube"></a>
+					<a href="http://flickr.com/" class="social-icon-small flickr"></a>
+					<a href="http://instagram.com/" class="social-icon-small instagram"></a>
+					<a href="/rss/" class="social-icon-small rss"></a>
+				</div>
+				<div class="col-md-8 footer-logo">
+					<a href="/"><img src="images/footer-logo.png" alt="Whitesquare logo"></a>
+					<p>
+						Copyright &copy; 2012 Whitesquare. A
+						<a href="http://pcklab.com">pcklab</a> creation
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  </body>
+</html>
