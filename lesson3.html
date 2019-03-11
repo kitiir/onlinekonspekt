@@ -1,65 +1,79 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
   <head>
-    <title>Онлайн конспект</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/styles.css" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet">
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Онлайн-Конспект/Миксер</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/carousel/">
+    <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
-	<div class="wrapper container">
-		<header>
-			<a href="/"><img src="http://kvantorium.68edu.ru/images/Logo/logo-Itkvantum-min-360x203(unwhite).png" alt="Whitesquare logo"></a>
-			<form name="search" action="#" method="get" class="form-inline form-search pull-right">
-				<div class="input-group">
-					<label class="sr-only" for="searchInput">Поиск</label>
-					<input class="form-control" id="searchInput" type="text" name="search" placeholder="Поиск">
-					<div class="input-group-btn">
-						<button type="submit" class="btn btn-primary"><img src="http://s1.iconbird.com/ico/2013/9/450/w256h2561380453921Search256x25632.png" width="310%" height="310%"></button>
-					</div>
-				</div>
-			</form>
-		</header>
-		<nav class="navbar navbar-default">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="index.html">Главная</a></li>
-				<li><a href="about.html">О нас</a></li>
-				<li><a href="services.html">Сервисы</a></li>
-				<li><a href="partners.html">Партнеры</a></li>
-				<li><a href="projects.html">Проекты</a></li>
-				<li><a href="articles.html">Статьи</a></li>
-				<li><a href="careers.html">Наши достижения</a></li>
-				<li><a href="contact.html">Контакты</a></li>
-			</ul>
-		</nav>
-		<div class="heading">
-			<h1>Миксер</h1>
-		</div>
-		<div class="row">
-			<aside class="col-md-7">
-				<div class="panel panel-primary">
-				<div class="panel-heading">Популярные проекты</div>
-				</div>
-				<ul class="list-group submenu">
-					<li class="list-group-item active"><a href="lesson1.html">СВЕТИЛЬНИК С УПРАВЛЯЕМОЙ ЯРКОСТЬЮ</a></li>
-					<li class="list-group-item active"><a href="lesson2.html">ПУЛЬСАР</a></li>
-					<li class="list-group-item active"><a href="lesson4.html">МЕРЗКОЕ ПИАНИНО</a></li>
-					<li class="list-group-item active"><a href="lesson3.html">МИКСЕР</a></li>
-				</ul>
-			</aside>
-			<section class="col-md-17">
-				<div class="jumbotron">
-					<blockquote>
-						<p>
-							&ldquo;Эксперимент 9. Миксер&rdquo;
-						</p>
-						<small>В этом эксперименте мы создаем модель миксера с двумя скоростями работы.</small>
-					</blockquote>
-				</div>
+
+<body>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Онлайн-Конспект</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Главная<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">О нас</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">Сервисы</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">Партнеры</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">Проекты</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">Статьи</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">Наши достижения</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">Контакты</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+      </form>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <div class="wrapper container">
+    <div class="row">
+      <section class="col-md-17">
+
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">Миксер</h1>
+            <p class="lead">В этом эксприменте мы создаем модель миксера с двумя скоростями работы.</p>
+          </div>
+        </div>
 
 				<h2>Список деталей для эксперимента</h2>
 					<p>• 1 плата Arduino Uno</p>
@@ -141,142 +155,17 @@ void loop()
 					<p>1. Внесите единственное изменение в программу, после которого максимальной скоростью вращения мотора составит половину от возможной.</p>
 					<p>2. Перепишите программу без использования инструкции continue.</p>
 					<p>3. Добавьте в схему еще одну кнопку, чтобы у миксера стало три режима. Понадобилось ли изменять что-либо в программе?</p>
-
-
-				<div class="row">
-					<div class="col-md-12">
-						<img src="/images/about-1.png" alt="" class="thumbnail">
-					</div>
-					<div class="col-md-12">
-						<img src="/images/about-2.png" alt="" class="thumbnail">
-					</div>
-				</div>
-				<h2>Our team</h2>
-				<div class="team">
-					<div class="row">
-						<div class="col col-md-4">
-							<img src="/images/team/Doe.jpg" alt="John Doe" class="thumbnail">
-							<div class="caption">
-								<h3>John Doe</h3>
-								<p>ceo</p>
-							</div>
-						</div>
-						<div class="col col-md-4 col-md-offset-1">
-							<img src="/images/team/Pittsley.jpg" alt="Saundra Pittsley" class="thumbnail">
-							<div class="caption">
-								<h3>Saundra Pittsley</h3>
-								<p>team leader</p>
-							</div>
-						</div>
-						<div class="col col-md-4 col-md-offset-1">
-							<img src="/images/team/Simser.jpg" alt="Julio Simser" class="thumbnail">
-							<div class="caption">
-								<h3>Julio Simser</h3>
-								<p>senior developer</p>
-							</div>
-						</div>
-						<div class="col col-md-4 col-md-offset-1">
-							<img src="/images/team/Venuti.jpg" alt="Margery Venuti" class="thumbnail">
-							<div class="caption">
-								<h3>Margery Venuti</h3>
-								<p>senior developer</p>
-							</div>
-						</div>
-						<div class="col col-md-4 col-md-offset-1">
-							<img src="/images/team/Tondrea.jpg" alt="Fernando Tondrea" class="thumbnail">
-							<div class="caption">
-								<h3>Fernando Tondrea</h3>
-								<p>developer</p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col col-md-4">
-							<img src="/images/team/Nobriga.jpg" alt="Ericka Nobriga" class="thumbnail">
-							<div class="caption">
-								<h3>Ericka Nobriga</h3>
-								<p>art director</p>
-							</div>
-						</div>
-						<div class="col col-md-4 col-md-offset-1">
-							<img src="/images/team/Rousselle.jpg" alt="Cody Rousselle" class="thumbnail">
-							<div class="caption">
-								<h3>Cody Rousselle</h3>
-								<p>senior ui designer</p>
-							</div>
-						</div>
-						<div class="col col-md-4 col-md-offset-1">
-							<img src="/images/team/Wollman.jpg" alt="Erik Wollman" class="thumbnail">
-							<div class="caption">
-								<h3>Erik Wollman</h3>
-								<p>senior ui designer</p>
-							</div>
-						</div>
-						<div class="col col-md-4 col-md-offset-1">
-							<img src="/images/team/Shoff.jpg" alt="Dona Shoff" class="thumbnail">
-							<div class="caption">
-								<h3>Dona Shoff</h3>
-								<p>ux designer</p>
-							</div>
-						</div>
-						<div class="col col-md-4 col-md-offset-1">
-							<img src="/images/team/Brunton.jpg" alt="Darryl Brunton" class="thumbnail">
-							<div class="caption">
-								<h3>Darryl Brunton</h3>
-								<p>ui designer</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-	</div>
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 twitter">
-					<h3>Twitter feed</h3>
-					<time datetime="2012-10-23"><a href="#">23 oct</a></time>
-					<p>
-						In ultricies pellentesque massa a porta. Aliquam ipsum enim, hendrerit ut porta nec, ullamcorper et nulla. In eget mi dui, sit amet scelerisque nunc. Aenean aug
-					</p>
-				</div>
-				<div class="col-md-4 sitemap">
-					<h3>Sitemap</h3>
-					<div class="row">
-						<div class="col-md-12">
-							<a href="/home/">Home</a>
-							<a href="/about/">About</a>
-							<a href="/services/">Services</a>
-						</div>
-						<div class="col-md-12">
-							<a href="/partners/">Partners</a>
-							<a href="/customers/">Support</a>
-							<a href="/contact/">Contact</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 social">
-					<h3>Social networks</h3>
-					<a href="http://twitter.com/" class="social-icon twitter"></a>
-					<a href="http://facebook.com/" class="social-icon facebook"></a>
-					<a href="http://plus.google.com/" class="social-icon google-plus"></a>
-					<a href="http://vimeo.com/" class="social-icon-small vimeo"></a>
-					<a href="http://youtube.com/" class="social-icon-small youtube"></a>
-					<a href="http://flickr.com/" class="social-icon-small flickr"></a>
-					<a href="http://instagram.com/" class="social-icon-small instagram"></a>
-					<a href="/rss/" class="social-icon-small rss"></a>
-				</div>
-				<div class="col-md-8 footer-logo">
-					<a href="/"><img src="images/footer-logo.png" alt="Whitesquare logo"></a>
-					<p>
-						Copyright &copy; 2012 Whitesquare. A
-						<a href="http://pcklab.com">pcklab</a> creation
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
-		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    </div>
+  </div>
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+</main>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
