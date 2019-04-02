@@ -1,5 +1,32 @@
 <!doctype html>
 <html lang="en">
+<style>
+@media (min-width: 768px) {
+  .navbar-container {
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    height: 100vh;
+  }
+  .navbar-container .navbar {
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 100%;
+  }
+  .navbar-container .navbar-collapse {
+    align-items: flex-start;
+  }
+  .navbar-container .nav {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .navbar-container .navbar-nav {
+    flex-direction: column !important;
+  }
+}
+</style>
 
   <head>
     <meta charset="utf-8">
@@ -65,8 +92,6 @@
 
 <main role="main">
   <div class="wrapper container">
-    <div class="row">
-      <section class="col-md-17">
 
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
@@ -74,6 +99,36 @@
             <p class="lead">В этом эксперименте мы создаем маленькую клавиатуру, на которой можно сыграть несколько нот.</p>
           </div>
         </div>
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 col-lg-3 navbar-container" style="background-color: #e9ecef ">
+        <nav class="navbar navbar-expand-md navbar-light" >
+          <a class="navbar-brand" href="#">Популярные проекты</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-link" href="#link-1">Светильник с управляемой яркостью</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#link-2">Пульсар</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#link-3">Миксер</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#link-4">Мерзкое пианино</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="col-sm">
+      <section class="col-md-17">
 			 <h2>Список деталей для эксперимента</h2>
 				  <p>• 1 плата Arduino Uno</p>
 				  <p>• 1 беспаечная макетная плата</p>
@@ -157,8 +212,11 @@ void loop()
                 <p>1. Сделайте так, чтобы наше пианино звучало в диапазоне от 2 кГц до 5 кГц.</p>
                 <p>2. Добавьте еще 2 кнопки и измените программу так, чтобы можно было извлечь 5 различных нот.</p>
                 <p>3. Подключите кнопки по схеме со стягивающим резистором и измените программу так, чтобы она продолжала работать.</p>
+              </section>
+            </div>
     </div>
   </div>
+</div>
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>

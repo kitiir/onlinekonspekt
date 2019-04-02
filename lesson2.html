@@ -1,5 +1,32 @@
 <!doctype html>
 <html lang="en">
+<style>
+@media (min-width: 768px) {
+  .navbar-container {
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    height: 100vh;
+  }
+  .navbar-container .navbar {
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 100%;
+  }
+  .navbar-container .navbar-collapse {
+    align-items: flex-start;
+  }
+  .navbar-container .nav {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .navbar-container .navbar-nav {
+    flex-direction: column !important;
+  }
+}
+</style>
 
   <head>
     <meta charset="utf-8">
@@ -65,8 +92,6 @@
 
 <main role="main">
   <div class="wrapper container">
-    <div class="row">
-      <section class="col-md-17">
 
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
@@ -75,7 +100,35 @@
           </div>
         </div>
 
+        <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 col-lg-3 navbar-container" style="background-color: #e9ecef ">
+        <nav class="navbar navbar-expand-md navbar-light" >
+          <a class="navbar-brand" href="#">Популярные проекты</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-link" href="#link-1">Светильник с управляемой яркостью</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#link-2">Пульсар</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#link-3">Миксер</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#link-4">Мерзкое пианино</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
 
+      <div class="col-sm">
+      <section class="col-md-17">
 			 <h2>Список деталей для эксперимента</h2>
 				  <p>• 1 плата Arduino Uno</p>
 				  <p>• 1 беспаечная макетная плата</p>
@@ -148,8 +201,11 @@ void loop()
                 <p>1. Измените программу так, чтобы яркость шкалы росла только до половины от максимальной.</p>
                 <p>2. Измените программу так, чтобы шкала становилась максимально яркой в три раза быстрее, без изменения функции delay.</p>
                 <p>3. Измените исходную программу так, чтобы такой же результат был получен без использования операции %, но с применением условного оператора if.</p>
+              </section>
     </div>
   </div>
+</div>
+</div>
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
