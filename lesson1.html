@@ -100,35 +100,65 @@
           </div>
         </div>
 
-  	<div class="container-fluid">
+    <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 col-lg-3 navbar-container" style="background-color: #e9ecef ">
-      	<nav class="navbar navbar-expand-md navbar-light" >
-          <a class="navbar-brand" href="#">Популярные проекты</a>
+        <nav class="navbar navbar-expand-md navbar-light" >
+          <a class="navbar-brand" href="#">Навигация</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav">
               <li class="nav-item">
-              <a class="nav-link" href="#link-1">Светильник с управляемой яркостью</a>
+              <a class="nav-link" href="#parts">Список деталей</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#link-2">Пульсар</a>
+              <a class="nav-link" href="#schemes">Схемы</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#link-3">Миксер</a>
+              <a class="nav-link" href="#attention">Обратите внимание</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#link-4">Мерзкое пианино</a>
+              <a class="nav-link" href="#sketch">Скетч</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#explanation">Пояснения к коду</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#self-check">Вопросы для проверки себя</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#exercises">Задания для самостоятельного решения</a>
+              </li>
+            </ul>
+          </div>
+          <a class="navbar-brand" href="articles.html">Популярные проекты</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-link" href="lesson1.html">Светильник с управляемой яркостью</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="lesson2.html">Пульсар</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="lesson3.html">Миксер</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="lesson4.html">Мерзкое пианино</a>
               </li>
             </ul>
           </div>
         </nav>
       </div>
+
       <div class="col-sm">
       <section class="col-md-17">
-          <h2>Список деталей для эксперимента</h2>
+          <a name="parts"><h2>Список деталей для эксперимента</h2></a>
             <p>• 1 плата Arduino Uno</p>
             <p>• 1 беспаечная макетная плата</p>
             <p>• 1 светодиод</p>
@@ -141,19 +171,19 @@
             <p>• еще 1 резистор номиналом 220 Ом</p>
             <p>• еще 2 провода</p>
 
-          <h2>Принципиальная схема</h2>
+          <a name="schemes"><h2>Принципиальная схема</h2></a>
             <img src="http://wiki.amperka.ru/_media/конспект-arduino:3_scheme.svg.png">
           
           <h2>Схема на макетке</h2>
             <img src="http://wiki.amperka.ru/_media/конспект-arduino:3_bread.svg.png">
           
-          <h2>Обратите внимание</h2>
+          <a name="attention"><h2>Обратите внимание</h2></a>
             <p>• Мы подключили «землю» светодиода и переменного резистора (потенциометра) к длинной рельсе «-» макетной платы, и уже ее соединили с входом GND микроконтроллера. Таким образом мы использовали меньше входов и от макетки к контроллеру тянется меньше проводов.</p>
             <p>• Подписи «+» и «-» на макетке не обязывают вас использовать их строго для питания, просто чаще всего они используются именно так и маркировка нам помогает</p>
             <p>• Не важно, какая из крайних ножек потенциометра будет подключена к 5 В, а какая к GND, поменяется только направление, в котором нужно крутить ручку для увеличения напряжения. Запомните, что сигнал мы считываем со средней ножки</p>
             <p>• Для считывания аналогового сигнала, принимающего широкий спектр значений, а не просто 0 или 1, как цифровой, подходят только порты, помеченные на плате как «ANALOG IN» и пронумерованные с префиксом A. Для Arduino Uno — это A0-A5.</p>
 
-          <h2>Скетч</h2>
+          <a name="sketch"><h2>Скетч</h2></a>
             <pre class="prettyprint lang-c">// даём разумные имена для пинов со светодиодом
 // и потенциометром (англ potentiometer или просто «pot»)
 #define LED_PIN     9
@@ -192,7 +222,7 @@ void loop()
   analogWrite(LED_PIN, brightness);
 }</pre>
 
-          <h2>Пояснения к коду</h2>
+          <a name="explanation"><h2>Пояснения к коду</h2></a>
             <p>• С помощью директивы #define мы сказали компилятору заменять идентификатор POT_PIN на A0 — номер аналогового входа. Вы можете встретить код, где обращение к аналоговому порту будет по номеру без индекса A. Такой код будет работать, но во избежание путаницы с цифровыми портами используйте индекс.</p>
             <p>• Переменным принято давать названия, начинающиеся со строчной буквы.</p>
             <p>• Чтобы использовать переменную, необходимо ее объявить, что мы и делаем инструкцией:<pre class="prettyprint lang-c">int rotation, brightness;</pre></p>
@@ -201,13 +231,13 @@ void loop()
             <p>• Функция analogRead(pinA) возвращает целочисленное значение в диапазоне от 0 до 1023, пропорциональное напряжению, поданному на аналоговый вход, номер которого мы передаем функции в качестве параметра pinA</p>
             <p>• Обратите внимание, как мы получили значение, возвращенное функцией analogRead(): мы просто поместили его в переменную rotation с помощью оператора присваивания =, который записывает то, что находится справа от него в ту переменную, которая стоит слева</p>
 
-          <h2>Вопросы для проверки себя</h2>
+          <a name="self-check"><h2>Вопросы для проверки себя</h2></a>
             <p>1. Можем ли мы при сборке схемы подключить светодиод и потенциометр напрямую к разным входам GND микроконтроллера?</p>
             <p>2. В какую сторону нужно крутить переменный резистор для увеличения яркости светодиода?</p>
             <p>3. Что будет, если стереть из программы строчку pinMode(LED_PIN, OUTPUT)? строчку pinMode(POT_PIN, INPUT)?</p>
             <p>4. Зачем мы делим значение, полученное с аналогового входа перед тем, как задать яркость светодиода? что будет, если этого не сделать?</p>
 
-          <h2>Задания для самостоятельного решения</h2>
+          <a name="exercises"><h2>Задания для самостоятельного решения</h2></a>
             <p>1. Отключите питание платы, подключите к порту 5 еще один светодиод. Измените код таким образом, чтобы второй светодиод светился на 1/8 от яркости первого</p>
         </section>
     </div>

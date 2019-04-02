@@ -100,27 +100,56 @@
           </div>
         </div>
 
-        <div class="container-fluid">
+    <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 col-lg-3 navbar-container" style="background-color: #e9ecef ">
         <nav class="navbar navbar-expand-md navbar-light" >
-          <a class="navbar-brand" href="#">Популярные проекты</a>
+          <a class="navbar-brand" href="#">Навигация</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav">
               <li class="nav-item">
-              <a class="nav-link" href="#link-1">Светильник с управляемой яркостью</a>
+              <a class="nav-link" href="#parts">Список деталей</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#link-2">Пульсар</a>
+              <a class="nav-link" href="#schemes">Схемы</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#link-3">Миксер</a>
+              <a class="nav-link" href="#attention">Обратите внимание</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#link-4">Мерзкое пианино</a>
+              <a class="nav-link" href="#sketch">Скетч</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#explanation">Пояснения к коду</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#self-check">Вопросы для проверки себя</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#exercises">Задания для самостоятельного решения</a>
+              </li>
+            </ul>
+          </div>
+          <a class="navbar-brand" href="articles.html">Популярные проекты</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-link" href="lesson1.html">Светильник с управляемой яркостью</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="lesson2.html">Пульсар</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="lesson3.html">Миксер</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="lesson4.html">Мерзкое пианино</a>
               </li>
             </ul>
           </div>
@@ -129,7 +158,7 @@
 
       <div class="col-sm">
       <section class="col-md-17">
-			 <h2>Список деталей для эксперимента</h2>
+			 <a name="parts"><h2>Список деталей для эксперимента</h2></a>
 				  <p>• 1 плата Arduino Uno</p>
 				  <p>• 1 беспаечная макетная плата</p>
                   <p>• 1 биполярный транзистор</p>
@@ -137,11 +166,11 @@
                   <p>• 1 резистор номиналом 1 кОм</p>
                   <p>• 10 резисторов номиналом 220 Ом</p>
                   <p>• 13 проводов «папа-папа»</p>
-               <h2>Принципиальная схема</h2>
+               <a name="schemes"><h2>Принципиальная схема</h2></a>
                  <img src="http://wiki.amperka.ru/_media/%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82-arduino:6_scheme.svg.png">
                <h2>Схема на макетке</h2>
                 <img src="http://wiki.amperka.ru/_media/%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82-arduino:6_bread.svg.png">
-               <h2>Обратите внимание</h2>
+               <a name="attention"><h2>Обратите внимание</h2></a>
                   <p>• Светодиодная шкала — это несколько светодиодов в одном корпусе. Нам нужно чтобы питание шло к их анодам, а катоды направлялись к земле. Скорее всего на вашей шкале аноды находятся со стороны маркировки. Если шкала не светится, когда должна, попробуйте перевернуть ее.</p>
                   <p>• База биполярного транзистора — это его средняя ножка. Если повернуть транзистор плоской стороной к себе, ножками вниз, то левая ножка это коллектор, а правая — эмиттер.</p>
                   <p>• Если эту схему собрать без резистора между базой транзистора и портом Arduino, мы практически устроим короткое замыкание порта на землю. Рано или поздно это выведет из строя транзистор или ножку микроконтроллера.</p>
@@ -149,7 +178,7 @@
                   <p>• В данном случае мы включили 10 светодиодов параллельно, каждый через отдельный резистор. Включать их через один резистор неправильно: даже светодиоды из одной партии имеют минимальный разброс вольт-амперных характеристик, вследствие чего они:</p>
                   <p1> Светились бы с различной яркостью</p1>
                   <p1> Из-за минимальной разницы во времени включения, больший ток, прошедший через первый включившийся светодиод, мог бы вывести его из строя. И так по цепочке.</p1>
-                <h2>Скетч</h2>
+                <a name="sketch"><h2>Скетч</h2></a>
                 <pre class="prettyprint lang-c">
                 	#define CONTROL_PIN  9
 // переменные верхнего уровня, т.е. объявленные вне функций,
@@ -183,7 +212,7 @@ void loop()
 }
                 </pre>
 
-             <h2>Пояснения к коду</h2>
+             <a name="explanation"><h2>Пояснения к коду</h2></a>
                <p>• Как мы уже знаем, analogWrite(pin, value) в качестве value принимает значения от 0 до 255. Если передать значение из-за пределов этого диапазона, функция сработает, но в общем случае вы получите неожиданный результат.</p>
                <p>• Оператор X % Y дает остаток от деления X на Y. Если X меньше Y, т.е. целая часть результата деления равна 0, оператор % будет возвращать X. Таким образом:</p>
                    <p1>Пока brightness + 1 меньше 256, в brightness записывается значение brightness + 1
@@ -191,13 +220,13 @@ void loop()
                <p>• Оператор % работает только с целыми операндами.</p>
                <p>• В выражении (brightness + 1) % 256 скобки используются для назначения порядка действий. Операция % имеет больший приоритет, чем +, а сложение нам нужно выполнять раньше. С операциями умножения и деления оператор взятия остатка имеет одинаковый приоритет.</p>
 
-               <h2>Вопросы для проверки себя</h2>
+               <a name="self-check"><h2>Вопросы для проверки себя</h2></a>
                   <p>1. Почему у светодиодной шкалы на 10 сегментов 20 ножек?</p>
                   <p>2. Зачем в схеме биполярный транзистор?</p>
                   <p>3. За счет чего увеличивается яркость шкалы?</p>
                   <p>4. Почему после достижения значения 255 переменная brightness обнуляется?</p>
 
-                <h2>Задания для самостоятельного решения</h2>
+                <a name="exercises"><h2>Задания для самостоятельного решения</h2></a>
                 <p>1. Измените программу так, чтобы яркость шкалы росла только до половины от максимальной.</p>
                 <p>2. Измените программу так, чтобы шкала становилась максимально яркой в три раза быстрее, без изменения функции delay.</p>
                 <p>3. Измените исходную программу так, чтобы такой же результат был получен без использования операции %, но с применением условного оператора if.</p>

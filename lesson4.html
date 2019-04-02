@@ -100,27 +100,56 @@
           </div>
         </div>
 
-<div class="container-fluid">
+    <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 col-lg-3 navbar-container" style="background-color: #e9ecef ">
         <nav class="navbar navbar-expand-md navbar-light" >
-          <a class="navbar-brand" href="#">Популярные проекты</a>
+          <a class="navbar-brand" href="#">Навигация</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav">
               <li class="nav-item">
-              <a class="nav-link" href="#link-1">Светильник с управляемой яркостью</a>
+              <a class="nav-link" href="#parts">Список деталей</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#link-2">Пульсар</a>
+              <a class="nav-link" href="#schemes">Схемы</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#link-3">Миксер</a>
+              <a class="nav-link" href="#attention">Обратите внимание</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#link-4">Мерзкое пианино</a>
+              <a class="nav-link" href="#sketch">Скетч</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#explanation">Пояснения к коду</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#self-check">Вопросы для проверки себя</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#exercises">Задания для самостоятельного решения</a>
+              </li>
+            </ul>
+          </div>
+          <a class="navbar-brand" href="articles.html">Популярные проекты</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-link" href="lesson1.html">Светильник с управляемой яркостью</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="lesson2.html">Пульсар</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="lesson3.html">Миксер</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="lesson4.html">Мерзкое пианино</a>
               </li>
             </ul>
           </div>
@@ -129,7 +158,7 @@
 
       <div class="col-sm">
       <section class="col-md-17">
-			 <h2>Список деталей для эксперимента</h2>
+			 <a name="parts"><h2>Список деталей для эксперимента</h2></a>
 				  <p>• 1 плата Arduino Uno</p>
 				  <p>• 1 беспаечная макетная плата</p>
                   <p>• 1 пьезопищалка</p>
@@ -141,16 +170,16 @@
                   <p>• еще 2 резистора номиналом 10 кОм</p>
                   <p>• еще 2 провода</p>
                 
-               <h2>Принципиальная схема</h2>
+               <a name="schemes"><h2>Принципиальная схема</h2></a>
                  <img src="http://wiki.amperka.ru/_media/%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82-arduino:8_dumb_piano_scheme.svg.png">
                <h2>Схема на макетке</h2>
                 <img src="http://wiki.amperka.ru/_media/%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82-arduino:8_dumb_piano_bread.svg.png">
-               <h2>Обратите внимание</h2>
+               <a name="attention"><h2>Обратите внимание</h2></a>
                   <p>• Ножки тактовой кнопки, расположенные с одной стороны, разомкнуты, когда кнопка не нажата. Ножки, расположенные друг напротив друга на противоположных сторонах макетки находятся на одной «рельсе». Воспользовавшись этим, мы можем расположить резистор с одной стороны макетки, а провод, подключаемый к порту Arduino, с другой стороны.</p>
                   <p>• В данном эксперименте мы подключаем кнопки по схеме с подтягивающим резистором.</p>
                   <p>• Для того, чтобы данный вариант программы работал, важно, чтобы кнопки были подключены к портам, находящимся рядом друг с другом, т.е. имеющим соседние номера.</p>
                   
-                <h2>Скетч</h2>
+                <a name="sketch"><h2>Скетч</h2></a>
                 <pre class="prettyprint lang-c">
 #define BUZZER_PIN    13 // пин с пищалкой (англ. «buzzer»)
 #define FIRST_KEY_PIN 7  // первый пин с клавишей (англ. «key»)
@@ -191,24 +220,23 @@ void loop()
 }
                 </pre>
 
-             <h2>Пояснения к коду</h2>
+             <a name="explanation"><h2>Пояснения к коду</h2></a>
                <p>• Благодаря тому, что в начале программы мы определили FIRST_KEY_PIN и KEY_COUNT, мы можем подключать произвольное количество кнопок к любым идущим друг за другом цифровым пинам, и для корректировки программы нам не придется менять параметры цикла for. Изменить понадобится лишь эти константы:
 цикл в любом случае пробегает от 0 до KEY_COUNT;
 перед считыванием порта мы задаем смещение на номер первого используемого порта — FIRST_KEY_PIN.</p>
-               <p>• Функция digitalRead(pin) возвращает состояние порта, номер которого передан ей параметром pin. Это может быть состояние HIGH или LOW. Или, выражаясь иначе: высокое напряжение или низкое, 1 или 0, true или false</p>
-             
+               <p>• Функция digitalRead(pin) возвращает состояние порта, номер которого передан ей параметром pin. Это может быть состояние HIGH или LOW. Или, выражаясь иначе: высокое напряжение или низкое, 1 или 0, true или false</p>             
                <p>• Поскольку мы получаем с порта одно из двух состояний, мы сохраняем его в переменную уже знакомого нам типа boolean, и можем работать с ней как с логическим значением.</p>
                <p>• Мы используем логический оператор отрицания «не» !. Если keyUp имеет значение 0, выражение !keyUp будет иметь значение 1 и наоборот.</p>
                <p>• Поскольку мы собрали схему с подтягивающим резистором, при нажатии кнопки мы будем получать на соответствующем порте 0.</p>
                <p>• Действия, описанные в условном выражении if, выполняются, когда его условие имеет значение «истина» (единица). Поэтому для выполнения действия по нажатию, мы инвертируем сигнал с кнопки.</p>
 
-               <h2>Вопросы для проверки себя</h2>
+               <a name="self-check"><h2>Вопросы для проверки себя</h2></a>
                   <p>1. Почему мы не настраивали порты, к которым подключены кнопки, как INPUT, но устройство работает?</p>
                   <p>2. Каким образом мы избежали написания отдельного когда для чтения каждой кнопки?</p>
                   <p>3. Почему разные «ноты», издаваемые пищалкой, звучат с разной громкостью?</p>
                   <p>4. Для чего мы использовали оператор логического отрицания '!' ?</p>
 
-                <h2>Задания для самостоятельного решения</h2>
+                <a name="exercises"><h2>Задания для самостоятельного решения</h2></a>
                 <p>1. Сделайте так, чтобы наше пианино звучало в диапазоне от 2 кГц до 5 кГц.</p>
                 <p>2. Добавьте еще 2 кнопки и измените программу так, чтобы можно было извлечь 5 различных нот.</p>
                 <p>3. Подключите кнопки по схеме со стягивающим резистором и измените программу так, чтобы она продолжала работать.</p>
