@@ -34,7 +34,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>НАЗВАНИЕ ПРОЕКТА/СТАТЬИ</title>
+    <title>Структура программы на языке Си</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/carousel/">
     <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -95,8 +95,8 @@
 
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-4">НАЗВАНИЕ ПРОЕКТА/СТАТЬИ</h1>
-            <p class="lead">КРАТКОЕ ОПИСАНИЕ</p>
+            <h1 class="display-4">Структура программы</h1>
+            <p class="lead">Структура программы на языке Си</p>
           </div>
         </div>
 
@@ -111,25 +111,16 @@
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav">
               <li class="nav-item">
-              <a class="nav-link" href="#parts">___</a>
+              <a class="nav-link" href="#functions">Функции</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#schemes">___</a>
+              <a class="nav-link" href="#commentaries">Комментарии в языке Си</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#attention">___</a>
+              <a class="nav-link" href="#functionmain">Главная функция</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#sketch">___</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="#explanation">___</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="#self-check">___</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="#exercises">___</a>
+              <a class="nav-link" href="#write">Вывод на экран сообщения</a>
               </li>
             </ul>
           </div>
@@ -140,16 +131,16 @@
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav">
               <li class="nav-item">
-              <a class="nav-link" href="lesson1.html">____</a>
+              <a class="nav-link" href="'projects\project1.html">Светильник с управляемой яркостью</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="lesson2.html">____</a>
+              <a class="nav-link" href="C:/Users/Student/Documents/github/onlinekonspekt/projects/project2.html">Пульсар</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="lesson3.html">____</a>
+              <a class="nav-link" href="C:/Users/Student/Documents/github/onlinekonspekt/projects/project3.html">Миксер</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="lesson4.html">____</a>
+              <a class="nav-link" href="C:/Users/Student/Documents/github/onlinekonspekt/projects/project4.html">Мерзкое пианино</a>
               </li>
             </ul>
           </div>
@@ -159,8 +150,46 @@
       <div class="col-sm">
       <section class="col-md-17">
 
-                    <!--CONTENT-->
-                    
+      	<p>Программа на языке Си состоит из одной или более подпрограмм, называемых <a name="functions"><strong><i>функциями</i></strong></a>. </p>
+
+		<p>Язык Си является блочно-структурированным. Каждый блок заключается в фигурные скобки {}.</p>
+
+		<p>Основным блоком в программе консольного приложения на языке Си является главная функция, имеющая имя main().</p>
+
+		<p>Каждое действие в языке Си заканчивается символом «точка с запятой» — ; . В качестве действия может выступать вызов функции или осуществление некоторых операций.</p>
+
+        <p><strong><i>Имя функции</i></strong> — это коллективное имя группы описаний и операторов,
+заключенных в блок (фигурные скобки). За именем функции в круглых скобках указываются параметры функции.</p>
+
+		<a name="commentaries"><h1>Комментарии в языке Си</h1></a>
+		<p>В языке Си  для комментариев используются символы</p>
+		<pre class="prettyprint lang-c">/* — начало комментария;
+*/ — конец комментария.</pre>
+		<p>Вся последовательность, заключенная между этими символами, является комментарием.</p>
+		<p>Это удобно для написания <strong>многострочных комментариев:</strong></p>
+		<pre class="prettyprint lang-c">int a;   /* целая переменная */</pre>
+		<p>Многострочные комментарии также удобно использовать при отладке для сокрытия от выполнения части кода.</p>
+		<p>В дополнение к этому, для написания коротких комментариев могут использоваться символы //. При этом комментарием является все, что расположено после символов // и до конца строки:</p>
+		<pre class="prettyprint lang-c">float b; // вещественная переменная</pre>
+		<a name="functionmain"><h1>Главная функция</h1></a>
+		<p>При выполнении консольного приложения, написанного на языке Си, операционная система компьютера передаёт управление функции с именем main(). Функцию main() нельзя вызывать из других функций программы, она является управляющей.</p>
+		<p>Следующие за именем функции круглые скобки предназначены для указания параметров (аргументов), которые передаются в функцию при обращении к ней. В данном случае операционная система не передаёт в функцию main() никаких аргументов, поэтому список аргументов в круглых скобках пустой.</p>
+		<p>Главную функцию можно записать по-разному:</p>
+		<pre class="prettyprint lang-c">• int main()
+• void main().</pre>
+		<p>Перед именем функции указывается тип возвращаемого значения. При обращении к главной функции значение возвращается операционной системе. Последняя запись не будет возвращать значения. Однако void main() — не совсем корректная запись, так как сообщает компилятору, что функция main() не возвращает никакого значения.</p>
+		<p>При этом запись int main() сообщает компилятору о возвращении целочисленного значения, которое необходимо операционной системе и сообщает ей о том, что программа завершилась корректно. Если же это значение не возвращено, то операционная система понимает, что программа завершилась в аварийном режиме.</p>
+		<p>Для возврата целочисленного значения перед завершением функции добавляется строка</p>
+		<pre class="prettyprint lang-c">return 0; // вещественная переменная</pre>
+		<p>В фигурные скобки заключены описания и операторы.</p>
+		<p>В общем случае программа может содержать несколько функций. Каждая функция имеет список передаваемых в нее параметров, указанный в круглых скобках, и набор операций, заключенных в блок, ограниченный фигурными скобками.</p>
+		<a name="write"><p><strong><i>Пример:</i></strong> Вывод на экран сообщения "Hello, world!".</p></a>
+		<iframe height="400px" width="100%" src="https://repl.it/@kiti_ir/hello-world?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+		<p>А теперь попробуйте написать текст на русском языке.</p>
+		<p>Проблема русского языка в консольных приложениях заключается в том, что консоль и редактор кода Microsoft Visual Studio поддерживают разные кодовые страницы. Для того, чтобы увидеть русские символы в консоли необходимо вызвать библиотеку stdlib.h.</p>
+		<p>При этом текст программы будет выглядеть следующим образом:</p>
+		<iframe height="400px" width="100%" src="https://repl.it/@kiti_ir/afa?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+		<p>Назад: <a href="articles.html">Язык Си</a></p>
         </section>
     </div>
   </div>
