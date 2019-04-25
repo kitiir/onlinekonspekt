@@ -34,7 +34,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>НАЗВАНИЕ ПРОЕКТА/СТАТЬИ</title>
+    <title>Условные операторы в Си</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/carousel/">
     <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -95,8 +95,8 @@
 
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-4">НАЗВАНИЕ ПРОЕКТА/СТАТЬИ</h1>
-            <p class="lead">КРАТКОЕ ОПИСАНИЕ</p>
+            <h1 class="display-4">Условные операторы в Си</h1>
+            <p class="lead">Рассмотрим подробнее структуру алгоритма «развилка». <strong><i>Разветвляющимся</i></strong> называется такой алгоритм, в котором выбирается один из нескольких возможных вариантов вычислительного процесса. Каждый подобный путь называется<strong><i>ветвью алгоритма</i></strong>.Признаком разветвляющегося алгоритма является наличие операций проверки условия. Чаще всего для проверки условия используется условный оператор if.
           </div>
         </div>
 
@@ -160,7 +160,80 @@
       <section class="col-md-17">
 
                     <!--CONTENT-->
-                    
+<h1>Условный оператор if</h1>
+<p>Условный оператор if может использоваться в форме полной или неполной развилки.</p>
+<table class="table table-bordered table-dark"> <thead>
+<tr>
+<td>Неполная развилка</td>
+<td>Полная развилка</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>if</span>&nbsp;(Условие)<br/>{<br/>&nbsp;&nbsp;БлокОпераций1;<br/>}<br/></div></div></div></td>
+<td>if</span>&nbsp;(Условие)<br/>{<br/>&nbsp;&nbsp;БлокОпераций1;<br/>}<br/>else</span><br/>{<br/>&nbsp;&nbsp;БлокОпераций2;<br/>}<br/></div></div></div></td>
+</tr>
+<tr>
+<td><img src="https://prog-cpp.ru/wp-content/uploads/bl_if.png"/></td>
+<td><img src="https://prog-cpp.ru/wp-content/uploads/bl_ifelse.png"/></td>
+</tr>
+</tbody>
+</table>
+<p>В случае неполной развилки если <i>Условие</i> истинно, то <i>БлокОпераций1</i> выполняется, если <i>Условие</i> ложно, то <i>БлокОпераций1</i> не выполняется.</p>
+<p>В случае полной развилки если <i>Условие</i> истинно, то выполняется <i>БлокОпераций1</i>, иначе выполняется <i>БлокОпераций2</i>.</p>
+<p><i>БлокОпераций</i> может состоять из одной операции. В этом случае наличие фигурных скобок, ограничивающих блок, необязательно.</p>
+<p><strong><i>Пример на C:</i></strong></p>
+<iframe height="400px" width="100%" src="https://repl.it/@RobDaKo/DecisiveSilkySort?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<p>Оператор if может быть вложенным.</p>
+<p><strong><i>Пример на C:</i></strong></p>
+<iframe height="400px" width="100%" src="https://repl.it/@RobDaKo/DecisiveSilkySort?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<p>При использовании вложенной формы оператора if опция else связывается с последним оператором if. Если требуется связать опцию else с предыдущим оператором if, внутренний условный оператор заключается в фигурные скобки:</p>
+<iframe height="400px" width="100%" src="https://repl.it/@RobDaKo/DecisiveSilkySort?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<h1>Тернарные операции</h1>
+<p><srtong><i>Тернарная условная операция</i></srtong> имеет 3 аргумента и возвращает свой второй или третий операнд в зависимости от значения логического выражения, заданного первым операндом. Синтаксис тернарной операции в языке Си</p>
+<pre class="prettyprint lang-c">Условие ? Выражение1 : Выражение2;</pre>
+<p>Если выполняется Условие, то тернарная операция возвращает Выражение1, в противном случае - Выражение2.</p>
+<p>Тернарные операции, как и операции условия, могут быть вложенными. Для  разделения вложенных операций используются круглые скобки.</p>
+<p>Приведенный выше пример с использованием тернарных операций можно представить в виде</p>
+<pre class="prettyprint lang-c">#define _CRT_SECURE_NO_WARNINGS // для возможности использования scanf
+#include <stdio.h>
+#include <stdlib.h> // для использования функции system
+int main() {
+  int key;  // объявляем целую переменную key
+  system("chcp 1251"); // переходим в консоли на русский язык
+  system("cls");       // очищаем окно консоли
+  printf("Введите номер пункта, 1 или 2: ");
+  scanf("%d", &key);   // вводим значение переменной key
+  key == 1 ? printf("\n Выбран первый пункт") :
+    (key == 2 ? printf("\n Выбран второй пункт") :
+      printf("\n Первый и второй пункты не выбраны"));
+  getchar(); getchar();
+  return 0;
+}</pre>
+<h1>Оператор ветвления switch (оператор множественного выбора)</h1>
+<p>Оператор if позволяет осуществить выбор только между двумя вариантами. Для того, чтобы производить выбор одного из нескольких вариантов необходимо использовать вложенный оператор if. С этой же целью можно использовать оператор ветвления switch.</p>
+<p>Общая форма записи</p>
+<pre class="prettyprint lang-c">switch (ЦелоеВыражение)
+{
+  case Константа1: БлокОпераций1;
+    break;
+  case Константа2: БлокОпераций2;
+    break;
+  . . .
+  case Константаn: БлокОперацийn;
+    break;
+  default: БлокОперацийПоУмолчанию;
+    break;
+}</pre>
+<p>Оператор ветвления switch выполняется следующим образом:</p>
+<p>• вычисляется <i>ЦелоеВыражение</i> в скобках оператора switch;</p>
+<p>• полученное значение сравнивается с метками <i>(Константами)</i> в опциях case, сравнение производится до тех пор, пока не будет найдена метка, соответствующая вычисленному значению целочисленного выражения;</p>
+<p>• выполняется <i>БлокОпераций</i> соответствующей метки case;</p>
+<p>• если соответствующая метка не найдена, то выполнится <i>БлокОперацийПоУмолчанию</i>, описанный в опции default.</p>
+<p>Альтернатива default может отсутствовать, тогда не будет произведено никаких действий.</p>
+<p>Опция break; осуществляет выход из оператора switch и переход к следующему за ним оператору. При отсутствии опции break будут выполняться все операторы, начиная с помеченного данной меткой и кончая оператором в опции default.</p>
+<p>Константы в опциях case должны быть целого типа (могут быть символами).</p>
+
         </section>
     </div>
   </div>
