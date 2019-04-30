@@ -34,7 +34,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>НАЗВАНИЕ ПРОЕКТА/СТАТЬИ</title>
+    <title>Операторы цикла в языке Си</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/carousel/">
     <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -95,8 +95,8 @@
 
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-4">НАЗВАНИЕ ПРОЕКТА/СТАТЬИ</h1>
-            <p class="lead">КРАТКОЕ ОПИСАНИЕ</p>
+            <h1 class="display-4">Операторы цикла</h1>
+            <p class="lead">Операторы цикла в языке Си</p>
           </div>
         </div>
 
@@ -111,25 +111,25 @@
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav">
               <li class="nav-item">
-              <a class="nav-link" href="#parts">___</a>
+              <a class="nav-link" href="#cycle">Цикл</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#schemes">___</a>
+              <a class="nav-link" href="#do…while">Цикл с постусловием do...while</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#attention">___</a>
+              <a class="nav-link" href="#for">Параметрический цикл for</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#sketch">___</a>
+              <a class="nav-link" href="#nestedloops">Вложенные циклы</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#explanation">___</a>
+              <a class="nav-link" href="#recomendations">Рекомендации по выбору цикла</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#self-check">___</a>
+              <a class="nav-link" href="#breakcontinue">Операторы прерывания и продолжения цикла break и continue</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#exercises">___</a>
+              <a class="nav-link" href="#goto">Оператор безусловного перехода goto</a>
               </li>
             </ul>
           </div>
@@ -158,9 +158,136 @@
 
       <div class="col-sm">
       <section class="col-md-17">
+      <a name="cycle"><p>Рассмотрим третью алгоритмическую структуру — цикл.</p>
+      <p><strong><i>Циклом</i></strong> называется блок кода, который для решения задачи требуется повторить несколько раз.</p> 
+      <p>Каждый цикл состоит из</p>      
+      <p>• блока проверки условия повторения цикла</p>   
+      <p>• тела цикла</p>
+      <p>Цикл выполняется до тех пор, пока блок проверки условия возвращает истинное значение.
+        Тело цикла содержит последовательность операций, которая выполняется в случае истинного условия повторения цикла. После выполнения последней операции тела цикла снова выполняется операция проверки условия повторения цикла. Если это условие не выполняется, то будет выполнена операция, стоящая непосредственно после цикла в коде программы.</p>
+      <p>В языке Си следующие виды циклов:</p>  
+      <p>• while — цикл с предусловием;</p>
+      <p>• do…while — цикл с постусловием;</p>
+      <p>• for — параметрический цикл (цикл с заданным числом повторений).</p>
+      <h1>Цикл с предусловием while</h1>
+      <p>Общая форма записи</p>
+      <pre class="prettyprint lang-c">while (Условие)
+{
+  БлокОпераций;
+}</pre>
+      <p>Если <strong>Условие</strong> выполняется (выражение, проверяющее <strong>Условие</strong>, не равно нулю), то выполняется <strong>БлокОпераций</strong>, заключенный в фигурные скобки, затем <strong>Условие</strong> проверяется снова.</p>
+      <p>Последовательность действий, состоящая из проверки <strong>Условия</strong> и выполнения <strong>БлокаОпераций</strong>, повторяется до тех пор, пока выражение, проверяющее <strong>Условие</strong>, не станет ложным (равным нулю). При этом происходит выход из цикла, и производится выполнение операции, стоящей после оператора цикла.
+      </p>
+      <p><strong><i>Пример на Си:</i></strong> Посчитать сумму чисел от 1 до введенного k</p>
+      <iframe height="400px" width="100%" src="https://repl.it/@kiti_ir/asfqwafsfasdawdasdsa?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      <p>При построении цикла while, в него необходимо включить конструкции, изменяющие величину проверяемого выражения так, чтобы в конце концов оно стало ложным (равным нулю). Иначе выполнение цикла будет осуществляться бесконечно (бесконечный цикл).</p>
+      <pre class="prettyprint lang-c">while (1)
+{
+  БлокОпераций;
+}</pre>
+      <p>while — цикл с предусловием, поэтому вполне возможно, что тело цикла не будет выполнено ни разу если в момент первой проверки проверяемое условие окажется ложным.</p>
+      <p>Например, в приведенном выше коде программы введите k=-1</p>
+      <a name="do…while"><h1>Цикл с постусловием do...while</h1>
+      <p>Общая форма записи</p>
+      <pre class="prettyprint lang-c">do {
+  БлокОпераций;
+} while (Условие);</pre>
+      <p>Цикл do...while — это цикл с постусловием, где истинность выражения, проверяющего       <strong>Условие</strong> проверяется после выполнения <strong>Блока Операций</strong>, заключенного в фигурные скобки. Тело цикла выполняется до тех пор, пока выражение, проверяющее <strong>Условие</strong>, не станет ложным, то есть тело цикла с постусловием выполнится хотя бы один раз.
+      </p>
+      <p>Использовать цикл do...while лучше в тех случаях, когда должна быть выполнена хотя бы одна итерация, либо когда инициализация объектов, участвующих в проверке условия, происходит внутри тела цикла.</p>
+      <p><strong><i>Пример на Си:</i></strong> Проверка, что пользователь ввел число от 0 до 10</p>
+      <iframe height="400px" width="100%" src="https://repl.it/@kiti_ir/ykhjjkm?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      <a name="for"><h1>Параметрический цикл for</h1>
+      <p>Общая форма записи</p>
+      <pre class="prettyprint lang-c">for (Инициализация; Условие; Модификация)
+{
+  БлокОпераций;
+}</pre>
+      <p>for — параметрический цикл (цикл с фиксированным числом повторений). Для организации такого цикла необходимо осуществить три операции:</p>
+      <p>• <strong>Инициализация</strong> - присваивание параметру цикла начального значения;</p>
+      <p>• <strong>Условие</strong> - проверка условия повторения цикла, чаще всего - сравнение величины параметра с некоторым граничным значением;</p>
+      <p>• <strong>Модификация</strong> - изменение значения параметра для следующего прохождения тела цикла.</p>
+      <p>Эти три операции записываются в скобках и разделяются точкой с запятой ;;. Как правило, параметром цикла является целочисленная переменная.</p>
+      <p><strong>Инициализация</strong> параметра осуществляется только один раз — когда цикл for начинает выполняться.</p>
+      <p>Проверка <strong>Условия</strong> повторения цикла осуществляется перед каждым возможным выполнением тела цикла. Когда выражение, проверяющее <strong>Условие</strong> становится ложным (равным нулю), цикл завершается. <strong>Модификация</strong> параметра осуществляется в конце каждого выполнения тела цикла. Параметр может как увеличиваться, так и уменьшаться.</p>
+      <p><strong><i>Пример на Си:</i></strong> Посчитать сумму чисел от 1 до введенного k</p>
+      <iframe height="400px" width="100%" src="https://repl.it/@kiti_ir/jljmjmj?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      <p>В записи цикла for можно опустить одно или несколько выражений, но нельзя опускать точку с запятой, разделяющие три составляющие цикла.
+Код предыдущего примера можно представить в виде</p>
+      <pre class="prettyprint lang-c">#define _CRT_SECURE_NO_WARNINGS // для возможности использования scanf
+#include <stdio.h>
+int main() {
+  int k;  // объявляем целую переменную key
+  int sum = 0; // начальное значение суммы равно 0
+  printf("k = ");
+  scanf("%d", &k);   // вводим значение переменной k
+  int i=1;
+  for(; i<=k; i++) // цикл для переменной i от 1 до k с шагом 1
+  {
+    sum = sum + i; // добавляем значение i к сумме
+  }
+  printf("sum = %d\n", sum); // вывод значения суммы
+  getchar(); getchar();
+  return 0;
+}</pre>
+      <p>Параметры, находящиеся в выражениях в заголовке цикла можно изменить при выполнении операции в теле цикла, например</p>
+      <pre class="prettyprint lang-c">#define _CRT_SECURE_NO_WARNINGS // для возможности использования scanf
+#include <stdio.h>
+int main() {
+  int k;  // объявляем целую переменную key
+  int sum = 0; // начальное значение суммы равно 0
+  printf("k = ");
+  scanf("%d", &k);   // вводим значение переменной k
+  for(int i=1; i<=k; ) // цикл для переменной i от 1 до k с шагом 1
+  {
+    sum = sum + i; // добавляем значение i к сумме
+    i++;           // добавляем 1 к значению i
 
-                    <!--CONTENT-->
-                    
+  }
+  printf("sum = %d\n", sum); // вывод значения суммы
+  getchar(); getchar();
+  return 0;
+}</pre>
+      <p>В цикле for может использоваться операция запятая - , - для разделения нескольких выражений. Это позволяет включить в спецификацию цикла несколько инициализирующих или корректирующих выражений. Выражения, к которым применяется операция запятая, будут вычисляться слева направо.</p>
+      <p><strong><i>Пример на Си:</i></strong></p>
+      <iframe height="400px" width="100%" src="https://repl.it/@kiti_ir/hjkhmn?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      <a name="nestedloops"><h1>Вложенные циклы</h1>
+      <p>В Си допускаются вложенные циклы, то есть когда один цикл находится внутри другого:</p>
+      <pre class="prettyprint lang-c"> for (i = 0; i&#60;n; i++)  // внешний цикл - Цикл1
+{     
+  for (j = 0; j&#60;n; j++)   // вложенный цикл - Цикл2
+  {
+    ;        // блок операций Цикла2
+  }
+  // блок операций Цикла1;
+} </pre>
+      <p><strong><i>Пример:</i></strong> Вывести числа от 0 до 99, по 10 в каждой строке</p>
+      <iframe height="400px" width="100%" src="https://repl.it/@kiti_ir/Ezrxrcfhtbk?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      <a name="recomendations"><h1>Рекомендации по выбору цикла</h1>
+      <p>При выборе цикла необходимо оценить необходимость проверки условия при входе в цикл или по завершении прохождения цикла.</p>
+      <p>Цикл с постусловием удобно применять в случаях, когда для проверки условия требуется вычислить значение выражения, которое затем будет размещено в теле цикла (см. выше пример ввода числа от 0 до 10).</p>
+      <p>Цикл c предусловием используется в случае если все переменные, участвующие в выражении, проверяющем условие, проинициализированы заранее, но точное число повторений цикла неизвестно или предполагается сложная модификация переменных, участвующих в формировании условия повторения цикла.</p>
+      <p>Если цикл ориентирован на работу с параметром, для которого заранее известно число повторений и шаг изменения, то более предпочтительным является параметрический цикл. Очень удобно использовать параметрический цикл при работе с массивами для перебора элементов.</p>
+      <a name="breakcontinue"><h1>Операторы прерывания и продолжения цикла break и continue</h1>
+      <p>В теле любого цикла можно использовать операторы прерывания цикла - break и продолжения цикла - continue.</p>
+      <p>Оператор break позволяет выйти из цикла, не завершая его.</p>
+      <p>Оператор continue позволяет пропустить часть операторов тела цикла и начать новую итерацию.</p>
+      <p><strong><i>Пример на Си:</i></strong> Вывести числа от 0 до 99 ниже главной диагонали</p>
+      <iframe height="400px" width="100%" src="https://repl.it/@kiti_ir/kyjhkgkgh?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      <p><strong><i>Пример на Си:</i></strong> Вывести числа от 0 до 99 исключая числа, оканчивающиеся на 5 или 8</p>
+      <iframe height="400px" width="100%" src="https://repl.it/@kiti_ir/tkghkghk?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      <p>При вложенных циклах действия операторов break и continue распространяется только на самую внутреннюю структуру, в которой они содержатся.</p>
+      <a name="goto"><h1>Оператор безусловного перехода goto</h1>
+      <p>Общая форма записи</p>
+      <pre class="prettyprint lang-c">goto Метка;
+. . .
+Метка : Операция;</pre>
+      <p>Выполнение оператора goto вызывает передачу управления в программе операции, помеченной <strong>Меткой</strong>. По сути <strong>Метка</strong> является идентификатором адреса операции, которой должно быть передано управление. Для отделения <strong>Метки</strong> от <strong>Операции</strong> используется двоеточие - :.</p>
+      <p><strong>Метка</strong> может располагаться в программе как до оператора goto, так и после него. Имена <strong>Меток</strong> образуются по тем же правилам, что и имена переменных.</p>
+      <p><strong><i>Пример на Си:</i></strong> Вывести все целые числа от 5 до 0.</p>
+      <iframe height="400px" width="100%" src="https://repl.it/@kiti_ir/yugjnfnfgjf?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      <p>Использование оператора goto в программах на Си без крайней необходимости не рекомендуется, поскольку это может повлечь за собой ряд ошибок, связанных с плохой читаемостью кода программы. Использование операторов цикла позволяет практически полностью исключить необходимость использования оператора goto.</p>
+      <p>Назад: <a href="articles.html">Язык Си</a></p>
         </section>
     </div>
   </div>
